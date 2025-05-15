@@ -100,5 +100,5 @@ async def add_balance(message: Message, state: FSMContext):
 async def add_balance(message: Message, state: FSMContext):
     user = await get_user(message.from_user.id)
     await update_balance(user, Decimal(message.text))
-    state.clear()
+    await state.clear()
     await message.answer('Баланс успешно пополнен')
