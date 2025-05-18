@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncAttrs, async_sessionmaker, create_async_
 from datetime import datetime
 load_dotenv()
 
-
+#подключение бд с сервера
 engine = create_async_engine(url=os.getenv('DATABASE'),
                              echo=True)
     
