@@ -72,7 +72,7 @@ async def gpt_vision(req, model, file):
             "type": "text",
             "text": req,
             })
-    
+    #добавил прокси в метод
     async with aiohttp.ClientSession(connector=aiohttp.TCPConnector()) as session:
         async with session.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload, proxy=os.getenv('PROXY')) as response:
             completion = await response.json()
