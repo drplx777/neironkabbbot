@@ -73,8 +73,8 @@ async def gpt_vision(req, model, file):
             "text": req,
             })
     
-    async with aiohttp.ClientSession() as session:
-        async with session.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload) as response:
+    async with aiohttp.ClientSession(connector=aiohttp.TCPConnector()) as session:
+        async with session.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload, proxy=os.getenv('PROXY')) as response:
             completion = await response.json()
             print(completion)
     return {'response': completion['choices'][0]['message']['content'],
