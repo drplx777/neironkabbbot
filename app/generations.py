@@ -8,6 +8,11 @@ import aiohttp
 import aiofiles
 
 
+async def Iam_Alive():
+    while True:
+        print('бот работает')
+        await asyncio.sleep(60)
+
 
 load_dotenv()
 
