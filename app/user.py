@@ -5,7 +5,7 @@ from aiogram.filters import CommandStart
 import app.keyboards as kb
 from app.states import Chat, Image, AddBalance
 from aiogram.fsm.context import FSMContext
-from app.generations import gpt_text, gpt_image, gpt_vision, Iam_Alive
+from app.generations import gpt_text, gpt_image, gpt_vision
 from app.database.requests import set_user, get_user, calculate, update_balance
 from decimal import Decimal
 import uuid
@@ -19,7 +19,7 @@ async def cmd_start(message: Message, state: FSMContext):
     await message.answer('Добро Пожаловать!', reply_markup=kb.main)
     await message.answer('⬇️⬇️⬇️Соц. Сети разработчика⬇️⬇️⬇️', reply_markup=kb.credits)
     await state.clear()
-    await Iam_Alive()
+    
     
     
 @user.message(F.text == 'Чат')

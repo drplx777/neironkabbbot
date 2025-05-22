@@ -1,9 +1,12 @@
+import asyncio
 from aiogram import Router, F
 from aiogram.types import Message, CallbackQuery
 from aiogram.filters import Filter, Command
 from aiogram.fsm.context import FSMContext
 from app.states import NewsLetter
 from app.database.requests import get_users
+
+
 
 admin = Router()
 
@@ -31,5 +34,12 @@ async def newsletter_message(message: Message, state: FSMContext):
     await message.answer('Рассылка завершена')
     
     
+@admin.message(Admin(), Command('LogsOn'))
+async def bot_status_logger(message: Message):
+    await message.answer('Логи запущены')
+    while True:
+        print('Бот работает')
+        await asyncio.sleep(60)
+
     
 
