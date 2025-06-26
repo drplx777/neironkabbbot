@@ -2,7 +2,7 @@ import etcd3
 import os
 import logging
 import threading
-
+#писи попы
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
