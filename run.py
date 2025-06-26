@@ -7,7 +7,6 @@ from core.config import config_loader
 
 from app.admin import admin
 from app.user import user
-
 from app.database.models import async_main
 
 #логгер(потом удалить)
