@@ -6,7 +6,7 @@ WORKDIR /app
 =======
 COPY reqs.txt .
 
-RUN pip install
+RUN pip install --no-cache-dir -r reqs.txt
 
 >>>>>>> 39a12b3 (etcd test)
 COPY . .
