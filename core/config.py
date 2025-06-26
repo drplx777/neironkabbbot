@@ -18,10 +18,10 @@ class EtcdConfigLoader:
     def initialize(self):
         """Предварительная загрузка критически важных конфигов"""
         required_keys = [
-            '/config/database_url',
-            '/config/bot_token',
-            '/config/ai_token',
-            '/config/proxy'
+            '/neiro/ENV_DATABASE',
+            '/neiro/ENV_BOT_TOKEN',
+            '/neiro/ENV_AI_TOKEN',
+            '/neiro/ENV_PROXY'
         ]
         
         for key in required_keys:

@@ -2,24 +2,15 @@ import asyncio
 import os
 import httpx
 from openai import AsyncOpenAI
-<<<<<<< HEAD
-from dotenv import load_dotenv
-=======
+
+
 from core.config import config_loader
->>>>>>> 39a12b3 (etcd test)
+
 import base64
 import aiohttp
 import aiofiles
 
 
-<<<<<<< HEAD
-
-
-load_dotenv()
-
-client = AsyncOpenAI(api_key=os.getenv('AI_TOKEN'), 
-                     http_client=httpx.AsyncClient(proxy=os.getenv("PROXY"), 
-=======
 ai_token = config_loader.get('/config/ai_token')
 proxyy = config_loader.get('/config/proxy')
 
@@ -27,7 +18,6 @@ proxyy = config_loader.get('/config/proxy')
 
 client = AsyncOpenAI(api_key=ai_token, 
                      http_client=httpx.AsyncClient(proxy=proxyy, 
->>>>>>> 39a12b3 (etcd test)
                                                                                   transport=httpx.HTTPTransport(local_address="0.0.0.0")))
 
 async def gpt_text(req, model):
@@ -89,11 +79,7 @@ async def gpt_vision(req, model, file):
             })
     #добавил прокси в метод
     async with aiohttp.ClientSession(connector=aiohttp.TCPConnector()) as session:
-<<<<<<< HEAD
-        async with session.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload, proxy=os.getenv('PROXY')) as response:
-=======
         async with session.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload, proxy=proxyy) as response:
->>>>>>> 39a12b3 (etcd test)
             completion = await response.json()
             print(completion)
     return {'response': completion['choices'][0]['message']['content'],
