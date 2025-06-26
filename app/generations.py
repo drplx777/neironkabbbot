@@ -11,8 +11,8 @@ import aiohttp
 import aiofiles
 
 
-ai_token = config_loader.get('/config/ai_token')
-proxyy = config_loader.get('/config/proxy')
+ai_token = config_loader.get('/neiro/ENV_AI_TOKEN')
+proxyy = config_loader.get('/neiro/ENV_PROXY')
 
 
 

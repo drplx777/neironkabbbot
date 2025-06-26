@@ -16,7 +16,6 @@ class EtcdConfigLoader:
         self._initialized = False
         
     def initialize(self):
-        """Предварительная загрузка критически важных конфигов"""
         required_keys = [
             '/neiro/ENV_DATABASE',
             '/neiro/ENV_BOT_TOKEN',

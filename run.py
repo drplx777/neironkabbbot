@@ -33,7 +33,7 @@ async def main():
     )
     watcher_thread.start()
     
-    bot = Bot(token=config_loader.get('/config/bot_token'))
+    bot = Bot(token=config_loader.get('/neiro/ENV_BOT_TOKEN'))
     dp = Dispatcher()
     dp.include_routers(user, admin)
     dp.startup.register(on_startup)
