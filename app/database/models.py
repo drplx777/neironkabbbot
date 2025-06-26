@@ -1,13 +1,24 @@
 import os
+<<<<<<< HEAD
 from dotenv import load_dotenv
+=======
+from core.config import config_loader
+>>>>>>> 39a12b3 (etcd test)
 from sqlalchemy import ForeignKey, String, BigInteger
 from sqlalchemy.orm import Mapped, mapped_column, DeclarativeBase, relationship
 from sqlalchemy.ext.asyncio import AsyncAttrs, async_sessionmaker, create_async_engine
 from datetime import datetime
+<<<<<<< HEAD
 load_dotenv()
 
 #подключение бд с сервера
 engine = create_async_engine(url=os.getenv('DATABASE'),
+=======
+
+database_url = config_loader.get('/config/databse_url')
+#подключение бд с сервера
+engine = create_async_engine(url=database_url,
+>>>>>>> 39a12b3 (etcd test)
                              echo=True)
     
 async_session = async_sessionmaker(engine)
