@@ -1,6 +1,6 @@
 import os
 
-from core.config import config_loader
+from core.config import get
 
 from sqlalchemy import ForeignKey, String, BigInteger
 from sqlalchemy.orm import Mapped, mapped_column, DeclarativeBase, relationship
@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncAttrs, async_sessionmaker, create_async_
 from datetime import datetime
 
 
-database_url = config_loader.get('/neiro/ENV_DATABASE')
+database_url = get('/neiro/ENV_DATABASE')
 #подключение бд с сервера
 engine = create_async_engine(url=database_url,
                              echo=True)

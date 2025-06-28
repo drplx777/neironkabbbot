@@ -4,15 +4,15 @@ import httpx
 from openai import AsyncOpenAI
 
 
-from core.config import config_loader
+from core.config import get
 
 import base64
 import aiohttp
 import aiofiles
 
 
-ai_token = config_loader.get('/neiro/ENV_AI_TOKEN')
-proxyy = config_loader.get('/neiro/ENV_PROXY')
+ai_token = get('/neiro/ENV_AI_TOKEN')
+proxyy = get('/neiro/ENV_PROXY')
 
 
 

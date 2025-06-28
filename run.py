@@ -3,7 +3,7 @@ import asyncio
 from aiogram import Bot, Dispatcher
 import logging
 import threading
-from core.config import config_loader
+from core.config import get
 
 from app.admin import admin
 from app.user import user
@@ -16,24 +16,10 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-def start_etcd_watcher():
-    try:
-        config_loader.watch_changes()
-    except Exception as e:
-        logger.error(f"ETCD watcher thread failed: {str(e)}")
-
-
 
 async def main():
-    config_loader.initialize()
-    watcher_thread = threading.Thread(
-        target=start_etcd_watcher,
-        name='etcd_watcher',
-        daemon=True
-    )
-    watcher_thread.start()
-    
-    bot = Bot(token=config_loader.get('/neiro/ENV_BOT_TOKEN'))
+    env_bot_token = get('/neiro/ENV_BOT_TOKEN')
+    bot = Bot(token=env_bot_token)
     dp = Dispatcher()
     dp.include_routers(user, admin)
     dp.startup.register(on_startup)
